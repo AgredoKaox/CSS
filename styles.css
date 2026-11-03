@@ -19,3 +19,8 @@ header { background-color: #cfe2ff; }
 main   { background-color: #fff3cd; }
 aside  { background-color: #d1e7dd; }
 footer { background-color: #e2e3e5; }
+
+article {
+    padding: 20px;
+    margin: 15px;
+}
