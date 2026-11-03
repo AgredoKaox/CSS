@@ -1,15 +1,12 @@
-/* ===== Ejercicio 1: HERENCIA ===== */
 body {
     font-family: sans-serif;
     color: #333333;
 }
 
-/* ===== Ejercicio 2: SELECTORES COMBINADOS ===== */
-header nav ul li a { color: #0b5ed7; }  /* azul */
-aside ul li a      { color: #198754; }  /* verde */
-footer ul li a     { color: #6f42c1; }  /* morado */
+/* Sistema plano: todas las reglas de enlace valen 10 pts */
+.nav-enlace    { color: #0b5ed7; }
+.filtro-enlace { color: #198754; }
+.social-enlace { color: #6f42c1; }
 
-/* ===== Ejercicio 3: CASCADA vs ESPECIFICIDAD ===== */
-/* El ID va ARRIBA de la clase a propósito */
-#btn-destacado { color: #dc3545; }  /* rojo */
-.btn-comprar   { color: #fd7e14; }  /* naranja, declarada DESPUÉS */
+.btn-comprar   { color: #fd7e14; }
+.btn-destacado { color: #dc3545; }  /* mismo peso (10) que .btn-comprar: gana por ir DESPUÉS */
