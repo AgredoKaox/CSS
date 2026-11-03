@@ -24,3 +24,11 @@ article {
     padding: 20px;
     margin: 15px;
 }
+
+header {
+    background-image: url('img/header.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  padding: 40px 20px;   /* da altura para que la imagen se vea */
+}
