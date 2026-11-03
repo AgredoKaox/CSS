@@ -4,3 +4,7 @@ body {
     color: #333333;
 }
 
+/* ===== Ejercicio 2: SELECTORES COMBINADOS ===== */
+header nav ul li a { color: #0b5ed7; }  /* azul */
+aside ul li a      { color: #198754; }  /* verde */
+footer ul li a     { color: #6f42c1; }  /* morado */
