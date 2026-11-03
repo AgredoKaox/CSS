@@ -14,3 +14,8 @@ body {
 
 .btn-comprar   { color: #fd7e14; }
 .btn-destacado { color: #dc3545; }  /* mismo peso (10) que .btn-comprar: gana por ir DESPUÉS */
+
+header { background-color: #cfe2ff; }
+main   { background-color: #fff3cd; }
+aside  { background-color: #d1e7dd; }
+footer { background-color: #e2e3e5; }
