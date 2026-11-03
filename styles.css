@@ -1,0 +1,12 @@
+body {
+    font-family: sans-serif;
+    color: #333333;
+}
+
+/* Sistema plano: todas las reglas de enlace valen 10 pts */
+.nav-enlace    { color: #0b5ed7; }
+.filtro-enlace { color: #198754; }
+.social-enlace { color: #6f42c1; }
+
+.btn-comprar   { color: #fd7e14; }
+.btn-destacado { color: #dc3545; }  /* mismo peso (10) que .btn-comprar: gana por ir DESPUÉS */
