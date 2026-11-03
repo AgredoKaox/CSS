@@ -8,3 +8,8 @@ body {
 header nav ul li a { color: #0b5ed7; }  /* azul */
 aside ul li a      { color: #198754; }  /* verde */
 footer ul li a     { color: #6f42c1; }  /* morado */
+
+/* ===== Ejercicio 3: CASCADA vs ESPECIFICIDAD ===== */
+/* El ID va ARRIBA de la clase a propósito */
+#btn-destacado { color: #dc3545; }  /* rojo */
+.btn-comprar   { color: #fd7e14; }  /* naranja, declarada DESPUÉS */
