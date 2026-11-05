@@ -1,13 +1,15 @@
+/* ========== TOKENS DE DISEÑO ========== */
 :root {
     /* Colores */
-    --color-primario:    #0b5ed7;   /* enlaces del menú */
-    --color-secundario:  #198754;   /* enlaces de filtros */
-    --color-terciario:   #6f42c1;   /* enlaces de redes */
-    --color-acento:      #fd7e14;   /* botón comprar */
-    --color-destacado:   #dc3545;   /* botón destacado */
-    --color-borde-card:  #ffc107;   /* borde de tarjetas */
+    --color-primario:    #0b5ed7;
+    --color-secundario:  #198754;
+    --color-terciario:   #6f42c1;
+    --color-acento:      #fd7e14;
+    --color-destacado:   #dc3545;
+    --color-borde-card:  #ffc107;
     --color-texto:       #333333;
-    --color-superficie:  #ffffff;   /* fondo de tarjetas */
+    --color-superficie:  #ffffff;
+    --color-fondo:       #f4f6f9;
     --color-header:      #cfe2ff;
     --color-main:        #fff3cd;
     --color-aside:       #d1e7dd;
@@ -16,58 +18,82 @@
     /* Tipografía */
     --fuente-principal: "Inter", sans-serif;
 
-    /* Espaciado (mismos valores que ya usabas) */
+    /* Espaciado */
+    --espaciado-xs:      6px;
     --espaciado-pequeno: 12px;
     --espaciado-medio:   15px;
     --espaciado-grande:  20px;
     --espaciado-xl:      40px;
+
+    /* Bordes redondeados */
+    --radio-pequeno: 8px;
+    --radio-medio:   12px;
+    --radio-grande:  20px;
+    --radio-pildora: 999px;
+
+    /* Sombras */
+    --sombra-suave:  0 2px 8px rgba(0, 0, 0, 0.08);
+    --sombra-fuerte: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-
-
+/* ========== BASE ========== */
 * {
     box-sizing: border-box;
     display: inline-block;
 }
 
-/* Lo que NO debe mostrarse (si no, aparece el código en pantalla) */
 head, head *, script, style {
     display: none;
 }
 
-/* El documento y las secciones principales ocupan todo el ancho */
 html, body {
+    display: block;
+}
+
+/* Títulos y párrafos van en su propia línea */
+h2, p, section {
     display: block;
 }
 
 body {
     font-family: var(--fuente-principal);
     color: var(--color-texto);
-    margin: 0;
+    background-color: var(--color-fondo);
+    line-height: 1.5;
+    max-width: 1100px;           /* contenido centrado, no pegado a los bordes */
+    margin: 0 auto;
     padding: var(--espaciado-grande);
 }
 
-/* Enlaces: todas las reglas valen 10 pts */
-.nav-enlace    { color: var(--color-primario); }
-.filtro-enlace {
-    color: var(--color-secundario);
-    padding: 4px 8px;
-    transition: background-color 0.25s, color 0.25s;   /* cambio suave */
+a {
+    text-decoration: none;
+    font-weight: 600;
 }
+
+/* ========== ENLACES (todas las reglas valen 10 pts) ========== */
+.nav-enlace    { color: var(--color-primario); }
 .social-enlace { color: var(--color-terciario); }
 
-/* Botones: --btn-color es una variable local que usan color, borde y hover */
+.filtro-enlace {
+    display: block;              /* el hover cubre todo el ancho del menú */
+    color: var(--color-secundario);
+    padding: var(--espaciado-xs) var(--espaciado-pequeno);
+    border-radius: var(--radio-pequeno);
+    transition: background-color 0.25s, color 0.25s;
+}
+
+/* Botones: --btn-color alimenta texto, borde y hover */
 .btn-comprar {
     --btn-color: var(--color-acento);
     color: var(--btn-color);
-    padding: 8px 18px;
+    padding: var(--espaciado-xs) var(--espaciado-grande);
     border: 2px solid var(--btn-color);
-    border-radius: 999px;
+    border-radius: var(--radio-pildora);
     transition: background-color 0.25s, color 0.25s, transform 0.1s;
 }
 .btn-destacado { --btn-color: var(--color-destacado); }  /* gana por ir después */
 
-/* Listas sin viñetas */
+/* ========== LISTAS ========== */
 ul {
     list-style: none;
     margin: 0;
@@ -77,7 +103,7 @@ li {
     margin-right: var(--espaciado-pequeno);
 }
 
-/* Header con imagen de fondo (ocupa todo el ancho) */
+/* ========== HEADER ========== */
 header {
     display: block;
     background-color: var(--color-header);
@@ -86,44 +112,92 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     padding: var(--espaciado-xl) var(--espaciado-grande);
-    margin-bottom: var(--espaciado-medio);
+    margin-bottom: var(--espaciado-grande);
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra-suave);
 }
 
-/* main y aside lado a lado con inline-block */
+/* El menú sobre una "píldora" blanca para que se lea sobre la foto */
+header nav {
+    background-color: var(--color-superficie);
+    padding: var(--espaciado-pequeno) var(--espaciado-grande);
+    border-radius: var(--radio-pildora);
+    box-shadow: var(--sombra-suave);
+}
+
+/* ========== MAIN Y ASIDE (lado a lado) ========== */
 main {
     vertical-align: top;
-    width: 70%;
+    width: 69%;
     background-color: var(--color-main);
     padding: var(--espaciado-grande);
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra-suave);
 }
+
 aside {
     vertical-align: top;
     width: 28%;
     margin-left: 1%;
     background-color: var(--color-aside);
     padding: var(--espaciado-grande);
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra-suave);
+}
+aside h2 {
+    margin: 0 0 var(--espaciado-pequeno);
+}
+aside li {
+    display: block;
+    margin: 0 0 var(--espaciado-xs);
 }
 
-/* Modelo de caja: cada producto es una caja */
+/* ========== TARJETAS (modelo de caja) ========== */
 article {
+    position: relative;          /* ancla de la insignia */
     vertical-align: top;
-    width: 220px;
+    /* 2 por fila: 50% menos margen (30px) y un respiro para el espacio entre inline-block */
+    width: calc(50% - 36px);
     padding: var(--espaciado-grande);
     margin: var(--espaciado-medio);
     border: 2px solid var(--color-borde-card);
+    border-radius: var(--radio-medio);
     background-color: var(--color-superficie);
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+article:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-fuerte);
+}
+article h2 {
+    margin: 0 0 var(--espaciado-xs);
+    font-size: 1.2rem;
+}
+article p {
+    margin: 0 0 var(--espaciado-pequeno);
+}
+/* El precio es el último <p> de la tarjeta */
+article p:last-of-type {
+    color: var(--color-primario);
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
+/* ========== FOOTER ========== */
 footer {
     display: block;
     background-color: var(--color-footer);
     padding: var(--espaciado-grande);
-    margin-top: var(--espaciado-medio);
+    margin-top: var(--espaciado-grande);
+    border-radius: var(--radio-grande);
+    text-align: center;
+}
+footer p {
+    margin: 0 0 var(--espaciado-pequeno);
 }
 
-/* ===== Subactividad 4: interactividad ===== */
-
-/* A. Menú lateral */
+/* ========== INTERACTIVIDAD (Subactividad 4) ========== */
 .filtro-enlace:hover {
     background-color: var(--color-secundario);
     color: var(--color-superficie);
@@ -136,7 +210,6 @@ footer {
     outline-offset: 2px;
 }
 
-/* B. Botones de compra */
 .btn-comprar:hover {
     background-color: var(--btn-color);
     color: var(--color-superficie);
@@ -146,17 +219,13 @@ footer {
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35);
 }
 
-/* B. Decoración de las tarjetas */
-article {
-    position: relative;   /* ancla para posicionar la insignia */
-}
 article::after {
     content: "¡Oferta!";
     position: absolute;
     top: -12px;
-    right: 12px;
-    padding: 2px 10px;
-    border-radius: 999px;
+    right: var(--espaciado-pequeno);
+    padding: 2px var(--espaciado-pequeno);
+    border-radius: var(--radio-pildora);
     background-color: var(--color-destacado);
     color: var(--color-superficie);
     font-size: 0.8rem;
@@ -171,6 +240,21 @@ article h2::after {
     display: block;
     width: 40px;
     height: 3px;
-    margin-top: 6px;
+    margin-top: var(--espaciado-xs);
+    border-radius: var(--radio-pildora);
     background-color: var(--color-borde-card);
+}
+
+/* ========== PANTALLAS PEQUEÑAS ========== */
+@media (max-width: 800px) {
+    main, aside {
+        width: 100%;
+        margin-left: 0;
+    }
+    aside {
+        margin-top: var(--espaciado-grande);
+    }
+    article {
+        width: calc(100% - 30px);
+    }
 }
