@@ -1,30 +1,4 @@
-:root {
-    /* Colores */
-    --color-primario:    #0b5ed7;   /* enlaces del menú */
-    --color-secundario:  #198754;   /* enlaces de filtros */
-    --color-terciario:   #6f42c1;   /* enlaces de redes */
-    --color-acento:      #fd7e14;   /* botón comprar */
-    --color-destacado:   #dc3545;   /* botón destacado */
-    --color-borde-card:  #ffc107;   /* borde de tarjetas */
-    --color-texto:       #333333;
-    --color-superficie:  #ffffff;   /* fondo de tarjetas */
-    --color-header:      #cfe2ff;
-    --color-main:        #fff3cd;
-    --color-aside:       #d1e7dd;
-    --color-footer:      #e2e3e5;
-
-    /* Tipografía */
-    --fuente-principal: "Inter", sans-serif;
-
-    /* Espaciado (mismos valores que ya usabas) */
-    --espaciado-pequeno: 12px;
-    --espaciado-medio:   15px;
-    --espaciado-grande:  20px;
-    --espaciado-xl:      40px;
-}
-
-
-
+/* Regla global: todos los elementos en inline-block */
 * {
     box-sizing: border-box;
     display: inline-block;
@@ -41,31 +15,19 @@ html, body {
 }
 
 body {
-    font-family: var(--fuente-principal);
-    color: var(--color-texto);
+    font-family: sans-serif;
+    color: #333333;
     margin: 0;
-    padding: var(--espaciado-grande);
+    padding: 20px;
 }
 
 /* Enlaces: todas las reglas valen 10 pts */
-.nav-enlace    { color: var(--color-primario); }
-.filtro-enlace {
-    color: var(--color-secundario);
-    padding: 4px 8px;
-    transition: background-color 0.25s, color 0.25s;   /* cambio suave */
-}
-.social-enlace { color: var(--color-terciario); }
+.nav-enlace    { color: #0b5ed7; }
+.filtro-enlace { color: #198754; }
+.social-enlace { color: #6f42c1; }
 
-/* Botones: --btn-color es una variable local que usan color, borde y hover */
-.btn-comprar {
-    --btn-color: var(--color-acento);
-    color: var(--btn-color);
-    padding: 8px 18px;
-    border: 2px solid var(--btn-color);
-    border-radius: 999px;
-    transition: background-color 0.25s, color 0.25s, transform 0.1s;
-}
-.btn-destacado { --btn-color: var(--color-destacado); }  /* gana por ir después */
+.btn-comprar   { color: #fd7e14; }
+.btn-destacado { color: #dc3545; }  /* gana por ir después */
 
 /* Listas sin viñetas */
 ul {
@@ -74,103 +36,49 @@ ul {
     padding: 0;
 }
 li {
-    margin-right: var(--espaciado-pequeno);
+    margin-right: 12px;
 }
 
 /* Header con imagen de fondo (ocupa todo el ancho) */
 header {
     display: block;
-    background-color: var(--color-header);
+    background-color: #cfe2ff;
     background-image: url('img/header.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: var(--espaciado-xl) var(--espaciado-grande);
-    margin-bottom: var(--espaciado-medio);
+    padding: 40px 20px;
+    margin-bottom: 15px;
 }
 
 /* main y aside lado a lado con inline-block */
 main {
     vertical-align: top;
     width: 70%;
-    background-color: var(--color-main);
-    padding: var(--espaciado-grande);
+    background-color: #fff3cd;
+    padding: 20px;
 }
 aside {
     vertical-align: top;
     width: 28%;
     margin-left: 1%;
-    background-color: var(--color-aside);
-    padding: var(--espaciado-grande);
+    background-color: #d1e7dd;
+    padding: 20px;
 }
 
 /* Modelo de caja: cada producto es una caja */
 article {
     vertical-align: top;
     width: 220px;
-    padding: var(--espaciado-grande);
-    margin: var(--espaciado-medio);
-    border: 2px solid var(--color-borde-card);
-    background-color: var(--color-superficie);
+    padding: 20px;
+    margin: 15px;
+    border: 2px solid #ffc107;
+    background-color: #ffffff;
 }
 
 footer {
     display: block;
-    background-color: var(--color-footer);
-    padding: var(--espaciado-grande);
-    margin-top: var(--espaciado-medio);
-}
-
-/* ===== Subactividad 4: interactividad ===== */
-
-/* A. Menú lateral */
-.filtro-enlace:hover {
-    background-color: var(--color-secundario);
-    color: var(--color-superficie);
-}
-.filtro-enlace::before {
-    content: "• ";
-}
-.filtro-enlace:focus {
-    outline: 3px solid var(--color-secundario);
-    outline-offset: 2px;
-}
-
-/* B. Botones de compra */
-.btn-comprar:hover {
-    background-color: var(--btn-color);
-    color: var(--color-superficie);
-}
-.btn-comprar:active {
-    transform: translateY(2px);
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35);
-}
-
-/* B. Decoración de las tarjetas */
-article {
-    position: relative;   /* ancla para posicionar la insignia */
-}
-article::after {
-    content: "¡Oferta!";
-    position: absolute;
-    top: -12px;
-    right: 12px;
-    padding: 2px 10px;
-    border-radius: 999px;
-    background-color: var(--color-destacado);
-    color: var(--color-superficie);
-    font-size: 0.8rem;
-    font-weight: 700;
-}
-article:nth-child(even)::after {
-    content: "Nuevo";
-    background-color: var(--color-secundario);
-}
-article h2::after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 3px;
-    margin-top: 6px;
-    background-color: var(--color-borde-card);
+    background-color: #e2e3e5;
+    padding: 20px;
+    margin-top: 15px;
 }
