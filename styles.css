@@ -25,7 +25,6 @@
 
 
 
-/* Regla global: todos los elementos en inline-block */
 * {
     box-sizing: border-box;
     display: inline-block;
@@ -42,19 +41,19 @@ html, body {
 }
 
 body {
-    font-family: sans-serif;
-    color: #333333;
+    font-family: var(--fuente-principal);
+    color: var(--color-texto);
     margin: 0;
-    padding: 20px;
+    padding: var(--espaciado-grande);
 }
 
 /* Enlaces: todas las reglas valen 10 pts */
-.nav-enlace    { color: #0b5ed7; }
-.filtro-enlace { color: #198754; }
-.social-enlace { color: #6f42c1; }
+.nav-enlace    { color: var(--color-primario); }
+.filtro-enlace { color: var(--color-secundario); }
+.social-enlace { color: var(--color-terciario); }
 
-.btn-comprar   { color: #fd7e14; }
-.btn-destacado { color: #dc3545; }  /* gana por ir después */
+.btn-comprar   { color: var(--color-acento); }
+.btn-destacado { color: var(--color-destacado); }  /* gana por ir después */
 
 /* Listas sin viñetas */
 ul {
@@ -63,49 +62,49 @@ ul {
     padding: 0;
 }
 li {
-    margin-right: 12px;
+    margin-right: var(--espaciado-pequeno);
 }
 
 /* Header con imagen de fondo (ocupa todo el ancho) */
 header {
     display: block;
-    background-color: #cfe2ff;
+    background-color: var(--color-header);
     background-image: url('img/header.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 40px 20px;
-    margin-bottom: 15px;
+    padding: var(--espaciado-xl) var(--espaciado-grande);
+    margin-bottom: var(--espaciado-medio);
 }
 
 /* main y aside lado a lado con inline-block */
 main {
     vertical-align: top;
     width: 70%;
-    background-color: #fff3cd;
-    padding: 20px;
+    background-color: var(--color-main);
+    padding: var(--espaciado-grande);
 }
 aside {
     vertical-align: top;
     width: 28%;
     margin-left: 1%;
-    background-color: #d1e7dd;
-    padding: 20px;
+    background-color: var(--color-aside);
+    padding: var(--espaciado-grande);
 }
 
 /* Modelo de caja: cada producto es una caja */
 article {
     vertical-align: top;
     width: 220px;
-    padding: 20px;
-    margin: 15px;
-    border: 2px solid #ffc107;
-    background-color: #ffffff;
+    padding: var(--espaciado-grande);
+    margin: var(--espaciado-medio);
+    border: 2px solid var(--color-borde-card);
+    background-color: var(--color-superficie);
 }
 
 footer {
     display: block;
-    background-color: #e2e3e5;
-    padding: 20px;
-    margin-top: 15px;
+    background-color: var(--color-footer);
+    padding: var(--espaciado-grande);
+    margin-top: var(--espaciado-medio);
 }
