@@ -135,3 +135,42 @@ footer {
     outline: 3px solid var(--color-secundario);
     outline-offset: 2px;
 }
+
+/* B. Botones de compra */
+.btn-comprar:hover {
+    background-color: var(--btn-color);
+    color: var(--color-superficie);
+}
+.btn-comprar:active {
+    transform: translateY(2px);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35);
+}
+
+/* B. Decoración de las tarjetas */
+article {
+    position: relative;   /* ancla para posicionar la insignia */
+}
+article::after {
+    content: "¡Oferta!";
+    position: absolute;
+    top: -12px;
+    right: 12px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background-color: var(--color-destacado);
+    color: var(--color-superficie);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+article:nth-child(even)::after {
+    content: "Nuevo";
+    background-color: var(--color-secundario);
+}
+article h2::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    margin-top: 6px;
+    background-color: var(--color-borde-card);
+}
