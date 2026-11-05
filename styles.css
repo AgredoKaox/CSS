@@ -49,11 +49,23 @@ body {
 
 /* Enlaces: todas las reglas valen 10 pts */
 .nav-enlace    { color: var(--color-primario); }
-.filtro-enlace { color: var(--color-secundario); }
+.filtro-enlace {
+    color: var(--color-secundario);
+    padding: 4px 8px;
+    transition: background-color 0.25s, color 0.25s;   /* cambio suave */
+}
 .social-enlace { color: var(--color-terciario); }
 
-.btn-comprar   { color: var(--color-acento); }
-.btn-destacado { color: var(--color-destacado); }  /* gana por ir después */
+/* Botones: --btn-color es una variable local que usan color, borde y hover */
+.btn-comprar {
+    --btn-color: var(--color-acento);
+    color: var(--btn-color);
+    padding: 8px 18px;
+    border: 2px solid var(--btn-color);
+    border-radius: 999px;
+    transition: background-color 0.25s, color 0.25s, transform 0.1s;
+}
+.btn-destacado { --btn-color: var(--color-destacado); }  /* gana por ir después */
 
 /* Listas sin viñetas */
 ul {
@@ -107,4 +119,19 @@ footer {
     background-color: var(--color-footer);
     padding: var(--espaciado-grande);
     margin-top: var(--espaciado-medio);
+}
+
+/* ===== Subactividad 4: interactividad ===== */
+
+/* A. Menú lateral */
+.filtro-enlace:hover {
+    background-color: var(--color-secundario);
+    color: var(--color-superficie);
+}
+.filtro-enlace::before {
+    content: "• ";
+}
+.filtro-enlace:focus {
+    outline: 3px solid var(--color-secundario);
+    outline-offset: 2px;
 }
