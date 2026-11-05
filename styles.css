@@ -1,3 +1,30 @@
+:root {
+    /* Colores */
+    --color-primario:    #0b5ed7;   /* enlaces del menú */
+    --color-secundario:  #198754;   /* enlaces de filtros */
+    --color-terciario:   #6f42c1;   /* enlaces de redes */
+    --color-acento:      #fd7e14;   /* botón comprar */
+    --color-destacado:   #dc3545;   /* botón destacado */
+    --color-borde-card:  #ffc107;   /* borde de tarjetas */
+    --color-texto:       #333333;
+    --color-superficie:  #ffffff;   /* fondo de tarjetas */
+    --color-header:      #cfe2ff;
+    --color-main:        #fff3cd;
+    --color-aside:       #d1e7dd;
+    --color-footer:      #e2e3e5;
+
+    /* Tipografía */
+    --fuente-principal: "Inter", sans-serif;
+
+    /* Espaciado (mismos valores que ya usabas) */
+    --espaciado-pequeno: 12px;
+    --espaciado-medio:   15px;
+    --espaciado-grande:  20px;
+    --espaciado-xl:      40px;
+}
+
+
+
 /* Regla global: todos los elementos en inline-block */
 * {
     box-sizing: border-box;
