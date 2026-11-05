@@ -108,3 +108,26 @@ el diseño usa una escala fija de medidas en vez de números inventados en cada 
 (Redáctalo con lo que observaste en la auditoría: por ejemplo, que todos los selectores
 leen del mismo origen, que no aparecen dos tonos "casi iguales" por errores de copia,
 y que una regla nueva reutiliza una variable en lugar de crear otro valor.)****
+
+## Hallazgos: Pseudoclases y Pseudoelementos
+
+### 1. Diferencia entre pseudoclase y pseudoelemento
+Una pseudoclase (`:hover`, `:active`, `:focus`) selecciona un elemento que ya existe
+cuando entra en cierto estado, por ejemplo cuando el cursor pasa por encima. Reacciona
+a eventos del usuario. Un pseudoelemento (`::before`, `::after`) crea una caja nueva
+que no está en el HTML, dentro o junto al elemento, y se usa para inyectar contenido
+decorativo. En el proyecto, `.filtro-enlace:hover` cambia colores y
+`.filtro-enlace::before` agrega el símbolo "•".
+
+### 2. Importancia de :focus para la accesibilidad
+Quien navega con teclado (Tab) necesita ver qué elemento está activo. Si se quita el
+contorno, no sabe dónde está. Con `:focus` y un `outline` visible en el menú lateral,
+la categoría activa se identifica claramente, y es una buena práctica de accesibilidad
+web.
+
+### 3. Por qué decorar con ::before/::after y no con etiquetas vacías
+El HTML debe describir contenido y estructura, no decoración. Si se agregan etiquetas
+vacías solo para dibujar insignias o iconos, el HTML se ensucia, los lectores de
+pantalla pueden leer elementos sin sentido y cambiar el diseño obliga a tocar el HTML
+en varios sitios. Con pseudoelementos, la decoración vive en el CSS, se reutiliza con
+las variables de `:root` y el HTML se mantiene semántico.
