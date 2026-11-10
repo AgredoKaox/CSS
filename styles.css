@@ -1,3 +1,10 @@
+@import url('css/encabezado.css');
+@import url('css/catalogo.css');
+@import url('css/tarjeta.css');
+@import url('css/botones.css');
+@import url('css/menu-lateral.css');
+@import url('css/pie.css');
+
 /* ========== TOKENS DE DISEÑO ========== */
 :root {
     /* Colores */
@@ -50,7 +57,6 @@ html, body {
     display: block;
 }
 
-/* Títulos y párrafos van en su propia línea */
 h2, p, section {
     display: block;
 }
@@ -60,7 +66,7 @@ body {
     color: var(--color-texto);
     background-color: var(--color-fondo);
     line-height: 1.5;
-    max-width: 1100px;           /* contenido centrado, no pegado a los bordes */
+    max-width: 1100px;
     margin: 0 auto;
     padding: var(--espaciado-grande);
 }
@@ -70,30 +76,6 @@ a {
     font-weight: 600;
 }
 
-/* ========== ENLACES (todas las reglas valen 10 pts) ========== */
-.nav-enlace    { color: var(--color-primario); }
-.social-enlace { color: var(--color-terciario); }
-
-.filtro-enlace {
-    display: block;              /* el hover cubre todo el ancho del menú */
-    color: var(--color-secundario);
-    padding: var(--espaciado-xs) var(--espaciado-pequeno);
-    border-radius: var(--radio-pequeno);
-    transition: background-color 0.25s, color 0.25s;
-}
-
-/* Botones: --btn-color alimenta texto, borde y hover */
-.btn-comprar {
-    --btn-color: var(--color-acento);
-    color: var(--btn-color);
-    padding: var(--espaciado-xs) var(--espaciado-grande);
-    border: 2px solid var(--btn-color);
-    border-radius: var(--radio-pildora);
-    transition: background-color 0.25s, color 0.25s, transform 0.1s;
-}
-.btn-destacado { --btn-color: var(--color-destacado); }  /* gana por ir después */
-
-/* ========== LISTAS ========== */
 ul {
     list-style: none;
     margin: 0;
@@ -103,158 +85,3 @@ li {
     margin-right: var(--espaciado-pequeno);
 }
 
-/* ========== HEADER ========== */
-header {
-    display: block;
-    background-color: var(--color-header);
-    background-image: url('img/header.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: var(--espaciado-xl) var(--espaciado-grande);
-    margin-bottom: var(--espaciado-grande);
-    border-radius: var(--radio-grande);
-    box-shadow: var(--sombra-suave);
-}
-
-/* El menú sobre una "píldora" blanca para que se lea sobre la foto */
-header nav {
-    background-color: var(--color-superficie);
-    padding: var(--espaciado-pequeno) var(--espaciado-grande);
-    border-radius: var(--radio-pildora);
-    box-shadow: var(--sombra-suave);
-}
-
-/* ========== MAIN Y ASIDE (lado a lado) ========== */
-main {
-    vertical-align: top;
-    width: 69%;
-    background-color: var(--color-main);
-    padding: var(--espaciado-grande);
-    border-radius: var(--radio-grande);
-    box-shadow: var(--sombra-suave);
-}
-
-aside {
-    vertical-align: top;
-    width: 28%;
-    margin-left: 1%;
-    background-color: var(--color-aside);
-    padding: var(--espaciado-grande);
-    border-radius: var(--radio-grande);
-    box-shadow: var(--sombra-suave);
-}
-aside h2 {
-    margin: 0 0 var(--espaciado-pequeno);
-}
-aside li {
-    display: block;
-    margin: 0 0 var(--espaciado-xs);
-}
-
-/* ========== TARJETAS (modelo de caja) ========== */
-article {
-    position: relative;          /* ancla de la insignia */
-    vertical-align: top;
-    /* 2 por fila: 50% menos margen (30px) y un respiro para el espacio entre inline-block */
-    width: calc(50% - 36px);
-    padding: var(--espaciado-grande);
-    margin: var(--espaciado-medio);
-    border: 2px solid var(--color-borde-card);
-    border-radius: var(--radio-medio);
-    background-color: var(--color-superficie);
-    box-shadow: var(--sombra-suave);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-article:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--sombra-fuerte);
-}
-article h2 {
-    margin: 0 0 var(--espaciado-xs);
-    font-size: 1.2rem;
-}
-article p {
-    margin: 0 0 var(--espaciado-pequeno);
-}
-/* El precio es el último <p> de la tarjeta */
-article p:last-of-type {
-    color: var(--color-primario);
-    font-size: 1.25rem;
-    font-weight: 700;
-}
-
-/* ========== FOOTER ========== */
-footer {
-    display: block;
-    background-color: var(--color-footer);
-    padding: var(--espaciado-grande);
-    margin-top: var(--espaciado-grande);
-    border-radius: var(--radio-grande);
-    text-align: center;
-}
-footer p {
-    margin: 0 0 var(--espaciado-pequeno);
-}
-
-/* ========== INTERACTIVIDAD (Subactividad 4) ========== */
-.filtro-enlace:hover {
-    background-color: var(--color-secundario);
-    color: var(--color-superficie);
-}
-.filtro-enlace::before {
-    content: "• ";
-}
-.filtro-enlace:focus {
-    outline: 3px solid var(--color-secundario);
-    outline-offset: 2px;
-}
-
-.btn-comprar:hover {
-    background-color: var(--btn-color);
-    color: var(--color-superficie);
-}
-.btn-comprar:active {
-    transform: translateY(2px);
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35);
-}
-
-article::after {
-    content: "¡Oferta!";
-    position: absolute;
-    top: -12px;
-    right: var(--espaciado-pequeno);
-    padding: 2px var(--espaciado-pequeno);
-    border-radius: var(--radio-pildora);
-    background-color: var(--color-destacado);
-    color: var(--color-superficie);
-    font-size: 0.8rem;
-    font-weight: 700;
-}
-article:nth-child(even)::after {
-    content: "Nuevo";
-    background-color: var(--color-secundario);
-}
-article h2::after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 3px;
-    margin-top: var(--espaciado-xs);
-    border-radius: var(--radio-pildora);
-    background-color: var(--color-borde-card);
-}
-
-/* ========== PANTALLAS PEQUEÑAS ========== */
-@media (max-width: 800px) {
-    main, aside {
-        width: 100%;
-        margin-left: 0;
-    }
-    aside {
-        margin-top: var(--espaciado-grande);
-    }
-    article {
-        width: calc(100% - 30px);
-    }
-}

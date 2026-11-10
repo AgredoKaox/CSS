@@ -1,0 +1,69 @@
+.card {
+    position: relative;          /* ancla de la insignia */
+    vertical-align: top;
+    width: calc(50% - 36px);
+    padding: var(--espaciado-grande);
+    margin: var(--espaciado-medio);
+    border: 2px solid var(--color-borde-card);
+    border-radius: var(--radio-medio);
+    background-color: var(--color-superficie);
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.card__title {
+    display: block;
+    margin: 0 0 var(--espaciado-xs);
+    font-size: 1.2rem;
+}
+.card__title::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    margin-top: var(--espaciado-xs);
+    border-radius: var(--radio-pildora);
+    background-color: var(--color-borde-card);
+}
+.card__description {
+    display: block;
+    margin: 0 0 var(--espaciado-pequeno);
+}
+.card__price {
+    display: block;
+    margin: 0 0 var(--espaciado-pequeno);
+    color: var(--color-primario);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* Insignia por defecto */
+.card::after {
+    content: "¡Oferta!";
+    position: absolute;
+    top: -12px;
+    right: var(--espaciado-pequeno);
+    padding: 2px var(--espaciado-pequeno);
+    border-radius: var(--radio-pildora);
+    background-color: var(--color-destacado);
+    color: var(--color-superficie);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* Modificadores: van DESPUÉS de la regla base (mismo peso, gana el orden) */
+.card--nuevo::after {
+    content: "Nuevo";
+    background-color: var(--color-secundario);
+}
+.card--destacada {
+    border-color: var(--color-destacado);
+}
+
+@media (max-width: 800px) {
+    .card { width: calc(100% - 30px); }
+}

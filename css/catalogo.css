@@ -1,0 +1,15 @@
+.catalog {
+    vertical-align: top;
+    width: 69%;
+    background-color: var(--color-main);
+    padding: var(--espaciado-grande);
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra-suave);
+}
+.catalog__list {
+    display: block;
+}
+
+@media (max-width: 800px) {
+    .catalog { width: 100%; }
+}

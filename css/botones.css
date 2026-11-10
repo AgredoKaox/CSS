@@ -1,0 +1,21 @@
+.btn {
+    --btn-color: var(--color-acento);
+    color: var(--btn-color);
+    padding: var(--espaciado-xs) var(--espaciado-grande);
+    border: 2px solid var(--btn-color);
+    border-radius: var(--radio-pildora);
+    transition: background-color 0.25s, color 0.25s, transform 0.1s;
+}
+
+/* Modificadores: solo cambian la variable local */
+.btn--destacado  { --btn-color: var(--color-destacado); }
+.btn--secundario { --btn-color: var(--color-secundario); }   /* listo para usar */
+
+.btn:hover {
+    background-color: var(--btn-color);
+    color: var(--color-superficie);
+}
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35);
+}
