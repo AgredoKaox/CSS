@@ -112,6 +112,7 @@ y que una regla nueva reutiliza una variable en lugar de crear otro valor.)****
 ## Hallazgos: Pseudoclases y Pseudoelementos
 
 ### 1. Diferencia entre pseudoclase y pseudoelemento
+
 Una pseudoclase (`:hover`, `:active`, `:focus`) selecciona un elemento que ya existe
 cuando entra en cierto estado, por ejemplo cuando el cursor pasa por encima. Reacciona
 a eventos del usuario. Un pseudoelemento (`::before`, `::after`) crea una caja nueva
@@ -120,14 +121,47 @@ decorativo. En el proyecto, `.filtro-enlace:hover` cambia colores y
 `.filtro-enlace::before` agrega el símbolo "•".
 
 ### 2. Importancia de :focus para la accesibilidad
+
 Quien navega con teclado (Tab) necesita ver qué elemento está activo. Si se quita el
 contorno, no sabe dónde está. Con `:focus` y un `outline` visible en el menú lateral,
 la categoría activa se identifica claramente, y es una buena práctica de accesibilidad
 web.
 
 ### 3. Por qué decorar con ::before/::after y no con etiquetas vacías
+
 El HTML debe describir contenido y estructura, no decoración. Si se agregan etiquetas
 vacías solo para dibujar insignias o iconos, el HTML se ensucia, los lectores de
 pantalla pueden leer elementos sin sentido y cambiar el diseño obliga a tocar el HTML
 en varios sitios. Con pseudoelementos, la decoración vive en el CSS, se reutiliza con
 las variables de `:root` y el HTML se mantiene semántico.
+
+## Hallazgos: Arquitectura BEM y Modularidad
+
+### 1. Qué significa BEM y cómo se escribe
+
+BEM significa Bloque, Elemento, Modificador. Se escribe `bloque__elemento--modificador`.
+- **Bloque:** componente autónomo, como `.card` o `.sidebar`.
+- **Elemento:** parte que solo tiene sentido dentro del bloque, unida con doble guion
+  bajo, como `.card__title` o `.sidebar__link`.
+- **Modificador:** variación de aspecto, unida con doble guion medio, como
+  `.card--destacada` o `.btn--secundario`.
+
+### 2. Por qué dividir el CSS en varios archivos ayuda al trabajo colaborativo
+
+Cada componente vive en su propio archivo (`tarjeta.css`, `botones.css`,
+`menu-lateral.css`...). Dos personas pueden trabajar a la vez en componentes distintos
+sin pisarse ni generar conflictos en Git, y es fácil encontrar dónde está cada estilo.
+
+### 3. Cómo BEM evita la guerra de especificidad
+
+Antes usaba selectores anidados como `header nav ul li a` (5 pts) o
+`article p:last-of-type` (12 pts), y para sobrescribirlos había que usar selectores
+más fuertes. Con BEM todas las reglas son de una sola clase (10 pts), y las colisiones
+se resuelven por el orden: el modificador va después del bloque. No hay IDs ni
+`!important`.
+
+### Nota sobre @import
+
+Los `@import` van al inicio de `styles.css`, antes de `:root`, porque CSS solo los
+acepta antes de cualquier otra regla. Las variables de `:root` siguen disponibles en
+todos los módulos.
