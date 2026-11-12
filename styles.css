@@ -5,22 +5,22 @@
 @import url('css/menu-lateral.css');
 @import url('css/pie.css');
 
-/* ========== TOKENS DE DISEÑO ========== */
 :root {
     /* Colores */
-    --color-primario:    #0b5ed7;
-    --color-secundario:  #198754;
-    --color-terciario:   #6f42c1;
-    --color-acento:      #fd7e14;
-    --color-destacado:   #dc3545;
-    --color-borde-card:  #ffc107;
-    --color-texto:       #333333;
-    --color-superficie:  #ffffff;
-    --color-fondo:       #f4f6f9;
-    --color-header:      #cfe2ff;
-    --color-main:        #fff3cd;
-    --color-aside:       #d1e7dd;
-    --color-footer:      #e2e3e5;
+    --color-primario:     #0b5ed7;
+    --color-secundario:   #198754;
+    --color-terciario:    #6f42c1;
+    --color-acento:       #fd7e14;
+    --color-destacado:    #dc3545;
+    --color-borde-card:   #ffc107;
+    --color-texto:        #333333;
+    --color-texto-suave:  #6c757d;   /* nuevo: precio tachado */
+    --color-superficie:   #ffffff;
+    --color-fondo:        #f4f6f9;
+    --color-header:       #cfe2ff;
+    --color-main:         #fff3cd;
+    --color-aside:        #d1e7dd;
+    --color-footer:       #e2e3e5;
 
     /* Tipografía */
     --fuente-principal: "Inter", sans-serif;
@@ -46,29 +46,14 @@
 /* ========== BASE ========== */
 * {
     box-sizing: border-box;
-    display: inline-block;
-}
-
-head, head *, script, style {
-    display: none;
-}
-
-html, body {
-    display: block;
-}
-
-h2, p, section {
-    display: block;
 }
 
 body {
+    margin: 0;
     font-family: var(--fuente-principal);
     color: var(--color-texto);
     background-color: var(--color-fondo);
     line-height: 1.5;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: var(--espaciado-grande);
 }
 
 a {
@@ -76,12 +61,23 @@ a {
     font-weight: 600;
 }
 
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-li {
-    margin-right: var(--espaciado-pequeno);
+/* ========== MACRO-ARQUITECTURA ========== */
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado-grande);
+    min-height: 100vh;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--espaciado-grande);
 }
 
+.main-wrapper {
+    display: flex;
+    flex: 1;                         /* absorbe todo el alto sobrante */
+    gap: var(--espaciado-grande);
+}
+
+@media (max-width: 800px) {
+    .main-wrapper { flex-direction: column; }
+}
