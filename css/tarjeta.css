@@ -1,10 +1,11 @@
 .card {
-    position: relative;               /* ancla de la insignia */
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: var(--espaciado-pequeno);
     height: 100%;
-    flex: 1 1 calc(50% - var(--espaciado-grande) / 2);   /* 2 por fila */
+    flex: 1 1 240px;                               /* crece, se encoge, base 240px */
+    max-width: 360px;                              /* no se estira demasiado */
     min-width: 0;
     padding: var(--espaciado-grande);
     border: 2px solid var(--color-borde-card);
@@ -14,8 +15,20 @@
     transition: transform 0.2s, box-shadow 0.2s;
 }
 .card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     box-shadow: var(--sombra-fuerte);
+}
+
+.card__image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 5 / 3;
+    object-fit: cover;                             /* recorta sin deformar */
+    border-radius: var(--radio-pequeno);
+    transition: transform 0.3s;
+}
+.card:hover .card__image {
+    transform: scale(1.03);
 }
 
 .card__title {
@@ -33,14 +46,14 @@
 }
 
 .card__description {
-    flex-grow: 1;                     /* el "resorte": empuja el botón al fondo */
+    flex-grow: 1;                                  /* el resorte: empuja el botón al fondo */
     margin: 0;
 }
 
 .card__price-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;            /* alinea las letras de ambos precios */
+    align-items: baseline;
 }
 .card__price {
     margin: 0;
@@ -56,7 +69,7 @@
 }
 
 .card__button {
-    align-self: flex-start;           /* el botón no se estira a todo el ancho */
+    align-self: stretch;                           /* botón a todo el ancho de la tarjeta */
 }
 
 /* Insignia por defecto */
@@ -83,5 +96,8 @@
 }
 
 @media (max-width: 800px) {
-    .card { flex-basis: 100%; }
+    .card {
+        flex-basis: 100%;
+        max-width: none;
+    }
 }

@@ -1,6 +1,6 @@
 .catalog {
-    flex: 1;                          /* ocupa todo el ancho que deja el aside */
-    min-width: 0;                     /* evita desbordes dentro de un flex */
+    flex: 1;
+    min-width: 0;
     background-color: var(--color-main);
     padding: var(--espaciado-grande);
     border-radius: var(--radio-grande);
