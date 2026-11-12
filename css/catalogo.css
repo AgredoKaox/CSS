@@ -1,15 +1,18 @@
 .catalog {
-    vertical-align: top;
-    width: 69%;
+    flex: 1;                          /* ocupa todo el ancho que deja el aside */
+    min-width: 0;                     /* evita desbordes dentro de un flex */
     background-color: var(--color-main);
     padding: var(--espaciado-grande);
     border-radius: var(--radio-grande);
     box-shadow: var(--sombra-suave);
 }
+
 .catalog__list {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaciado-grande);
 }
 
 @media (max-width: 800px) {
-    .catalog { width: 100%; }
+    .catalog { flex: none; }
 }

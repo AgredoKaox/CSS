@@ -1,9 +1,12 @@
 .card {
-    position: relative;          /* ancla de la insignia */
-    vertical-align: top;
-    width: calc(50% - 36px);
+    position: relative;               /* ancla de la insignia */
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado-pequeno);
+    height: 100%;
+    flex: 1 1 calc(50% - var(--espaciado-grande) / 2);   /* 2 por fila */
+    min-width: 0;
     padding: var(--espaciado-grande);
-    margin: var(--espaciado-medio);
     border: 2px solid var(--color-borde-card);
     border-radius: var(--radio-medio);
     background-color: var(--color-superficie);
@@ -16,8 +19,7 @@
 }
 
 .card__title {
-    display: block;
-    margin: 0 0 var(--espaciado-xs);
+    margin: 0;
     font-size: 1.2rem;
 }
 .card__title::after {
@@ -29,16 +31,32 @@
     border-radius: var(--radio-pildora);
     background-color: var(--color-borde-card);
 }
+
 .card__description {
-    display: block;
-    margin: 0 0 var(--espaciado-pequeno);
+    flex-grow: 1;                     /* el "resorte": empuja el botón al fondo */
+    margin: 0;
+}
+
+.card__price-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;            /* alinea las letras de ambos precios */
 }
 .card__price {
-    display: block;
-    margin: 0 0 var(--espaciado-pequeno);
+    margin: 0;
     color: var(--color-primario);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
+}
+.card__price-old {
+    margin: 0;
+    color: var(--color-texto-suave);
+    font-size: 0.95rem;
+    text-decoration: line-through;
+}
+
+.card__button {
+    align-self: flex-start;           /* el botón no se estira a todo el ancho */
 }
 
 /* Insignia por defecto */
@@ -55,7 +73,7 @@
     font-weight: 700;
 }
 
-/* Modificadores: van DESPUÉS de la regla base (mismo peso, gana el orden) */
+/* Modificadores: después de la base (mismo peso, gana el orden) */
 .card--nuevo::after {
     content: "Nuevo";
     background-color: var(--color-secundario);
@@ -65,5 +83,5 @@
 }
 
 @media (max-width: 800px) {
-    .card { width: calc(100% - 30px); }
+    .card { flex-basis: 100%; }
 }

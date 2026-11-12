@@ -1,23 +1,26 @@
 .footer {
-    display: block;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espaciado-pequeno);
     background-color: var(--color-footer);
     padding: var(--espaciado-grande);
-    margin-top: var(--espaciado-grande);
     border-radius: var(--radio-grande);
-    text-align: center;
 }
+
 .footer__text {
-    display: block;
-    margin: 0 0 var(--espaciado-pequeno);
+    margin: 0;
 }
+
 .footer__list {
+    display: flex;
+    gap: var(--espaciado-medio);
     list-style: none;
     margin: 0;
     padding: 0;
 }
-.footer__item {
-    margin-right: var(--espaciado-pequeno);
-}
+
 .footer__link {
     color: var(--color-terciario);
 }
