@@ -1,84 +1,139 @@
-/* Regla global: todos los elementos en inline-block */
+/* ========== BASE ========== */
 * {
     box-sizing: border-box;
-    display: inline-block;
-}
-
-/* Lo que NO debe mostrarse (si no, aparece el código en pantalla) */
-head, head *, script, style {
-    display: none;
-}
-
-/* El documento y las secciones principales ocupan todo el ancho */
-html, body {
-    display: block;
 }
 
 body {
-    font-family: sans-serif;
+    font-family: "Segoe UI", system-ui, sans-serif;
     color: #333333;
-    margin: 0;
+    background-color: #f4f6f9;
+    margin: 0 auto;
+    max-width: 1100px;
     padding: 20px;
+    line-height: 1.5;
+
+    /* Layout: contenido a la izquierda, filtros a la derecha */
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 20px;
 }
 
-/* Enlaces: todas las reglas valen 10 pts */
+body > * { grid-column: 1 / -1; }
+main     { grid-column: 1; }
+aside    { grid-column: 2; }
+
+a { text-decoration: none; font-weight: 600; }
+
+/* ========== ENLACES (sistema plano: 10 pts cada uno) ========== */
 .nav-enlace    { color: #0b5ed7; }
 .filtro-enlace { color: #198754; }
 .social-enlace { color: #6f42c1; }
 
+/* Botones: el color del texto define también el borde */
+.btn-comprar,
+.btn-destacado {
+    display: inline-block;
+    padding: 8px 18px;
+    border: 2px solid currentColor;
+    border-radius: 999px;
+    transition: background-color 0.2s;
+}
 .btn-comprar   { color: #fd7e14; }
-.btn-destacado { color: #dc3545; }  /* gana por ir después */
+.btn-destacado { color: #dc3545; }  /* mismo peso (10): gana por ir DESPUÉS */
 
-/* Listas sin viñetas */
-ul {
+/* ========== LISTAS ========== */
+header ul, aside ul, footer ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
-li {
-    margin-right: 12px;
+header li, footer li {
+    display: inline-block;
+    margin-right: 14px;
+}
+aside li {
+    margin-bottom: 10px;
 }
 
-/* Header con imagen de fondo (ocupa todo el ancho) */
+/* ========== HEADER ========== */
 header {
-    display: block;
-    background-color: #cfe2ff;
-    background-image: url('img/header.jpg');
+    background-color: #0b5ed7;
+    background-image:
+        linear-gradient(rgba(11, 94, 215, 0.35), rgba(0, 0, 0, 0.35)),
+        url('img/header.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 40px 20px;
-    margin-bottom: 15px;
+    padding: 60px 30px;
+    border-radius: 16px;
+    color: #ffffff;
+}
+header h1 {
+    margin: 0 0 20px;
+    font-size: 2.2rem;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+/* La navegación va sobre una "píldora" blanca para que se lea sobre la foto */
+header nav {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.92);
+    padding: 10px 20px;
+    border-radius: 999px;
 }
 
-/* main y aside lado a lado con inline-block */
+/* ========== MAIN + TARJETAS (modelo de caja) ========== */
 main {
-    vertical-align: top;
-    width: 70%;
     background-color: #fff3cd;
     padding: 20px;
-}
-aside {
-    vertical-align: top;
-    width: 28%;
-    margin-left: 1%;
-    background-color: #d1e7dd;
-    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-/* Modelo de caja: cada producto es una caja */
 article {
-    vertical-align: top;
-    width: 220px;
     padding: 20px;
     margin: 15px;
-    border: 2px solid #ffc107;
+    width: 250px;
     background-color: #ffffff;
+    border: 2px solid #ffc107;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+article:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+article h2, article h3 {
+    margin: 0 0 8px;
+    color: #212529;
+}
+article p {
+    margin: 0 0 12px;
+}
+
+/* ========== ASIDE Y FOOTER ========== */
+aside {
+    background-color: #d1e7dd;
+    padding: 20px;
+    border-radius: 16px;
+    align-self: start;
+}
+aside h2, aside h3 {
+    margin-top: 0;
 }
 
 footer {
-    display: block;
     background-color: #e2e3e5;
-    padding: 20px;
-    margin-top: 15px;
+    padding: 20px 30px;
+    border-radius: 16px;
+    text-align: center;
+}
+footer p { margin: 0 0 10px; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 800px) {
+    body { grid-template-columns: 1fr; }
+    main, aside { grid-column: 1; }
+    article { width: 100%; }
 }
