@@ -165,3 +165,26 @@ se resuelven por el orden: el modificador va después del bloque. No hay IDs ni
 Los `@import` van al inicio de `styles.css`, antes de `:root`, porque CSS solo los
 acepta antes de cualquier otra regla. Las variables de `:root` siguen disponibles en
 todos los módulos.
+
+## Hallazgos: Arquitectura Total con Flexbox
+
+Aplicar `min-height: 100vh` y `flex-direction: column` al contenedor global
+`.app-layout` fue crucial porque convierte la página en una columna que siempre mide
+como mínimo la altura de la pantalla. Al darle `flex: 1` al `.main-wrapper`, ese
+bloque absorbe todo el espacio sobrante y empuja el pie de página al fondo, incluso
+cuando hay pocos productos. Sin esto, el footer quedaba pegado al último contenido y
+dejaba un hueco vacío debajo en pantallas altas.
+
+La propiedad `gap` reemplazó los márgenes laterales de los menús. Antes cada ítem
+llevaba su propio `margin-right`, lo que dejaba un espacio sobrante después del último
+enlace y obligaba a repetir el valor en varias reglas. Ahora el contenedor
+(`.header__list`, `.footer__list`) define el espacio una sola vez con
+`gap: var(--espaciado-medio)`, y solo se aplica entre elementos.
+
+La unión de BEM, Custom Properties y Flexbox permitió que la tarjeta resista textos
+de distinta longitud. BEM da nombres planos (`.card__description`,
+`.card__price-wrapper`) que se estilan sin depender de la estructura; las variables
+mantienen coherentes los espacios y colores; y Flexbox hace el trabajo de distribución:
+`flex-direction: column` apila el contenido y `flex-grow: 1` en la descripción actúa
+como un resorte que empuja el botón al fondo, de modo que todos quedan alineados sin
+importar cuánto texto tenga cada tarjeta.
